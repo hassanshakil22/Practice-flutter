@@ -14,9 +14,15 @@ class LoginView extends StatelessWidget {
         ),
         body: const Column(
           children: [
-            TileWidget(),
-            TileWidget(),
-            TileWidget(),
+            TileWidget(
+              name: "hassan",
+            ),
+            TileWidget(
+              name: "ali",
+            ),
+            TileWidget(
+              name: "muhammad",
+            ),
           ],
         )
         //  const ListTile(

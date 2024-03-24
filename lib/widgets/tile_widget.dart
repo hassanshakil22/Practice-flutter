@@ -2,7 +2,8 @@
 import 'package:flutter/material.dart';
 
 class TileWidget extends StatelessWidget {
-  const TileWidget({super.key});
+  final name;
+  const TileWidget({super.key, required this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -10,25 +11,25 @@ class TileWidget extends StatelessWidget {
       padding: EdgeInsets.all(5),
       color: Colors.grey,
       height: 50,
-      child: const Row(
+      child: Row(
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 backgroundColor: Colors.blue,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
               Text(
-                "data",
+                "$name",
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ],
           ),
-          Spacer(),
-          Text("data")
+          const Spacer(),
+          const Text("data")
         ],
       ),
     );
