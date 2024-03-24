@@ -8,16 +8,17 @@ class TileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(5),
+      padding: const EdgeInsets.all(8),
+      margin: const EdgeInsets.only(bottom: 1),
       color: Colors.grey,
-      height: 50,
+      height: 60,
       child: Row(
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
               const CircleAvatar(
-                backgroundColor: Colors.blue,
+                backgroundColor: Colors.greenAccent,
               ),
               const SizedBox(
                 width: 5,
