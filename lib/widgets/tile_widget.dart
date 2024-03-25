@@ -2,8 +2,9 @@
 import 'package:flutter/material.dart';
 
 class TileWidget extends StatelessWidget {
-  final name;
-  const TileWidget({super.key, required this.name});
+  final List todo;
+  final int indexes;
+  const TileWidget({super.key, required this.todo, required this.indexes});
 
   @override
   Widget build(BuildContext context) {
@@ -17,20 +18,17 @@ class TileWidget extends StatelessWidget {
         children: [
           Row(
             children: [
-              const CircleAvatar(
-                backgroundColor: Colors.greenAccent,
-              ),
               const SizedBox(
                 width: 5,
               ),
               Text(
-                "$name",
-                style: TextStyle(fontWeight: FontWeight.bold),
+                "${todo[indexes]}",
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
             ],
           ),
           const Spacer(),
-          const Text("data")
+          IconButton(onPressed: () {}, icon: const Icon(Icons.delete))
         ],
       ),
     );
