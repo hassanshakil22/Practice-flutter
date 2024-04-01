@@ -1,65 +1,66 @@
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:practice_flutter/about_view.dart';
+// import 'package:flutter/widgets.dart';
 import 'package:practice_flutter/widgets/tile_Widget.dart';
 
-class TodoApp extends StatefulWidget {
-  const TodoApp({super.key});
+class NavigationView extends StatefulWidget {
+  const NavigationView({super.key});
 
   @override
-  State<TodoApp> createState() => _TodoAppState();
+  State<NavigationView> createState() => _NavigationViewState();
 }
 
-class _TodoAppState extends State<TodoApp> {
-  List<String> toDoList = ["hassan", "ali", "muhammad"];
+class _NavigationViewState extends State<NavigationView> {
+  List studentsInfo = [
+    {
+      "name": "hassan",
+      "Grp": "Pre-Engineering",
+      "RollNo": "031",
+      "ispassed": true,
+    },
+    {
+      "name": "Muhammad",
+      "Grp": "Pre-Medical",
+      "RollNo": "035",
+      "ispassed": true,
+    },
+    {
+      "name": "Tauheed",
+      "Grp": "Computer",
+      "RollNo": "051",
+      "ispassed": false,
+    }
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ListView.builder(
-            itemCount: toDoList.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                padding: const EdgeInsets.all(8),
-                margin: const EdgeInsets.only(bottom: 1),
-                color: Colors.grey,
-                height: 60,
-                child: Row(
-                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          toDoList[index],
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    const Spacer(),
-                    Row(
-                      children: [
-                        IconButton(
-                            onPressed: () {
-                              toDoList.removeAt(index);
-                              setState(() {});
-                            },
-                            icon: const Icon(Icons.edit)),
-                        IconButton(
-                            color: Colors.red,
-                            onPressed: () {
-                              toDoList[index] = "";
-                              setState(() {});
-                            },
-                            icon: const Icon(Icons.delete)),
-                      ],
-                    ),
-                  ],
-                ),
-              );
-            }));
+      appBar: AppBar(
+        backgroundColor: Colors.amber,
+      ),
+      body: ListView.builder(
+        itemCount: studentsInfo.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListTile(
+              title: Text("${studentsInfo[index]["name"]}"),
+              tileColor: Colors.yellow,
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AboutView(
+                        studentData: studentsInfo[index],
+                      ),
+                    ));
+              },
+            ),
+          );
+        },
+      ),
+    );
   }
 }
 
